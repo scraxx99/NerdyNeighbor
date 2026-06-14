@@ -1,20 +1,38 @@
-import {useState} from 'react';
+import { useEffect, useState } from "react";
+
 interface Task {
-    text: string;
     id: number;
+    text: string;
     completed: boolean;
 }
-export default function ToDo() {
+
+export default function Todo() {
     const [input, setInput] = useState<string>("");
-    //every task has the same 3 variables
-    const [tasks, setTasks] = useState<Task[]>([]);
 
-    function addTask(){
+    // Load tasks from localStorage when the component is created
+    const [tasks, setTasks] = useState<Task[]>(() => {
+        const savedTasks = localStorage.getItem("tasks");
 
-        if (input.trim() === ""){
+        if (savedTasks) {
+            return JSON.parse(savedTasks);
+        }
+
+        return [];
+    });
+
+    // Save tasks whenever they change
+    useEffect(() => {
+        localStorage.setItem(
+            "tasks",
+            JSON.stringify(tasks)
+        );
+    }, [tasks]);
+
+    function addTask() {
+        if (input.trim() === "") {
             return;
         }
-        //user creating a new task
+
         const newTask: Task = {
             id: Date.now(),
             text: input,
@@ -25,70 +43,74 @@ export default function ToDo() {
         setInput("");
     }
 
-    function toggleTask(id: number){
-        setTasks(prev => 
-            prev.map(task => 
+    function toggleTask(id: number) {
+        setTasks(prev =>
+            prev.map(task =>
                 task.id === id
-                ? {
-                    ...task, completed: ! task.completed
-                } : task
+                    ? {
+                          ...task,
+                          completed: !task.completed,
+                      }
+                    : task
             )
         );
     }
 
-    function deleteTask(id: number){
+    function deleteTask(id: number) {
         setTasks(prev =>
             prev.filter(task => task.id !== id)
-
         );
     }
 
     return (
         <div>
-            <h1> Todo List</h1>
-            <input 
-            type = "text"
-            value = {input}
-            onChange = {(e) => setInput(e.target.value)}
-            placeholder = "Enter a task"
+            <h1>Todo List</h1>
+
+            <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Enter a task"
             />
 
-            <button onClick ={addTask}>
+            <button onClick={addTask}>
                 Add
             </button>
-            
+
             <ul>
                 {tasks.map(task => (
-                    <li key ={task.id}>
-                       <input
-                        type = "checkbox"
-                        checked = {task.completed}
-                        onChange = {() => toggleTask(task.id)}
+                    <li key={task.id}>
+                        <input
+                            type="checkbox"
+                            checked={task.completed}
+                            onChange={() =>
+                                toggleTask(task.id)
+                            }
                         />
 
                         <span
-                            style = {{
-                                textDecoration: task.completed
-                                ? "line-through"
-                                : "none",
-
+                            style={{
+                                textDecoration:
+                                    task.completed
+                                        ? "line-through"
+                                        : "none",
+                                marginLeft: "8px",
+                                marginRight: "8px",
                             }}
-                            >
-                                {task.text}
-                            </span>
-                            <button 
-                            onClick={() => deleteTask(task.id)}
-                            >
-                                Delete
-                            </button>
+                        >
+                            {task.text}
+                        </span>
+
+                        <button
+                            onClick={() =>
+                                deleteTask(task.id)
+                            }
+                        >
+                            Delete
+                        </button>
                     </li>
                 ))}
             </ul>
         </div>
-    )
-
-
-
-
-
-} 
+    );
+}
