@@ -1,0 +1,50 @@
+import { useState } from "react";
+import { askAI } from "./ai";
+
+export default function Assistant() {
+    const [input, setInput] = useState<string>("");
+    const [answer, setAnswer] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(false);
+
+    async function askQuestion() {
+        if (input.trim() === "") {
+            return;
+        }
+
+        setLoading(true);
+
+        try {
+            const response = await askAI(input);
+            setAnswer(response);
+            setInput("");
+        } catch (error) {
+            console.error(error);
+            setAnswer("An error occurred while contacting Gemini.");
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    return (
+        <div>
+            <h1>AI Help</h1>
+
+            <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Ask Gemini"
+            />
+
+            <button
+                onClick={askQuestion}
+                disabled={loading}
+            >
+                {loading ? "Thinking..." : "Ask"}
+            </button>
+
+            <h2>Answer</h2>
+            <p>{answer}</p>
+        </div>
+    );
+}
