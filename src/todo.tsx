@@ -63,7 +63,7 @@ export default function Todo() {
     }
 
     return (
-        <div className='bg-white rounded 2x1 shadow-lg p-6'>
+        <div className="bg-black/30 backdrop-blur-md text-white rounded-2xl shadow-xl p-6">
             <h1 className=' font-mono font-bold'>Todo List</h1>
 
             <input
@@ -73,7 +73,7 @@ export default function Todo() {
                 placeholder="Enter a task"
             />
 
-            <button  className=' font-mono font-bold'
+            <button  className="bg-purple-600/50 backdrop-blur-md font-bold hover:bg-purple-600/70 text-white px-4 py-2 rounded-lg transition"
             onClick={addTask}>
                 Add
             </button>
@@ -103,6 +103,7 @@ export default function Todo() {
                         </span>
 
                         <button
+                        className="bg-purple-600/50 backdrop-blur-md hover:bg-red-600/70 text-white px-4 py-2 rounded-lg transition"
                             onClick={() =>
                                 deleteTask(task.id)
                             }

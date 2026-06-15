@@ -21,16 +21,16 @@ export function Counter() {
     const secs = seconds % 60;
 
     return (
-        <div className='bg-white rounded 2x1 shadow-lg p-6'>
-            <h1 className=' font-mono font-bold'>Hours: {hor}</h1>
-            <h1 className='font-mono font-bold'>Minutes: {mins}</h1>
-            <h1 className='font-mono font-bold'>Seconds: {secs}</h1>
+        <div className="bg-black/30 backdrop-blur-md font-bold text-white rounded-2xl shadow-xl p-6">
+            <h1 className="text-6xl font-mono text-center">Hours: {hor}</h1>
+            <h1 className="text-6xl font-mono text-center">Minutes: {mins}</h1>
+            <h1 className="text-6xl font-mono text-center">Seconds: {secs}</h1>
 
-            <button className='font-mono font-bold p-4 ' onClick={() => setSeconds(0)}>
+            <button className="bg-purple-600/50 backdrop-blur-md hover:bg-purple-600/70 text-white px-4 py-2 rounded-lg transition" onClick={() => setSeconds(0)}>
                 Reset
             </button>
 
-            <button className='font-mono font-bold p-4' onClick={() => setRunning(prev => !prev)}>
+            <button className="bg-purple-600/50 backdrop-blur-md hover:bg-purple-600/70 text-white px-4 py-2 rounded-lg transition" onClick={() => setRunning(prev => !prev)}>
             {running ? "Pause" : "Resume"}
             </button>
         </div>
