@@ -26,7 +26,7 @@ export function Counter() {
             <h1 className="text-6xl font-mono text-center">Minutes: {mins}</h1>
             <h1 className="text-6xl font-mono text-center">Seconds: {secs}</h1>
 
-            <button className="bg-purple-600/50 backdrop-blur-md hover:bg-purple-600/70 text-white px-4 py-2 rounded-lg transition" onClick={() => setSeconds(0)}>
+            <button className="bg-purple-600/50 m-4 backdrop-blur-md hover:bg-purple-600/70 text-white px-4 py-2 rounded-lg transition" onClick={() => setSeconds(0)}>
                 Reset
             </button>
 

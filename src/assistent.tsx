@@ -28,7 +28,7 @@ export default function Assistant() {
     return (
         <div className='bg-black/30 backdrop-blur-md text-white rounded-2xl shadow-xl p-6'>
             <h1 className=' font-mono font-bold'>AI Help</h1>
-
+            <form>
             <input className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 type="text"
                 value={input}
@@ -42,7 +42,7 @@ export default function Assistant() {
             >
                 {loading ? "Thinking..." : "Ask"}
             </button>
-
+            </form>
             <h2 className=' font-mono font-bold'>Answer</h2>
             <p className=' font-mono font-bold'>{answer}</p>
         </div>
