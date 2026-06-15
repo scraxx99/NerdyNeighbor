@@ -19,14 +19,14 @@ export default function Assistant() {
             setInput("");
         } catch (error) {
             console.error(error);
-            setAnswer("An error occurred while contacting Gemini.");
+            setAnswer("An error occurred while   contacting Gemini.");
         } finally {
             setLoading(false);
         }
     }
 
     return (
-        <div>
+        <div className='bg-white rounded 2x1 shadow-lg p-6'>
             <h1>AI Help</h1>
 
             <input

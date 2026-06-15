@@ -63,7 +63,7 @@ export default function Todo() {
     }
 
     return (
-        <div>
+        <div className='bg-white rounded 2x1 shadow-lg p-6'>
             <h1>Todo List</h1>
 
             <input

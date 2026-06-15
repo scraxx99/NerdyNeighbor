@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 //Initial timer function with hours seconds and minutes I dont even wanna talk about how long this took
 export function Counter() {
     const [seconds, setSeconds] = useState(0);
@@ -20,16 +21,16 @@ export function Counter() {
     const secs = seconds % 60;
 
     return (
-        <div>
-            <h1>Hours: {hor}</h1>
-            <h1>Minutes: {mins}</h1>
-            <h1>Seconds: {secs}</h1>
+        <div className='bg-white rounded 2x1 shadow-lg p-6'>
+            <h1 className='font-mono font-bold'>Hours: {hor}</h1>
+            <h1 className='font-mono font-bold'>Minutes: {mins}</h1>
+            <h1 className='font-mono font-bold'>Seconds: {secs}</h1>
 
-            <button onClick={() => setSeconds(0)}>
+            <button className='font-mono font-bold p-4' onClick={() => setSeconds(0)}>
                 Reset
             </button>
 
-            <button onClick={() => setRunning(prev => !prev)}>
+            <button className='font-mono font-bold p-4' onClick={() => setRunning(prev => !prev)}>
             {running ? "Pause" : "Resume"}
             </button>
         </div>
