@@ -22,11 +22,11 @@ export function Counter() {
 
     return (
         <div className='bg-white rounded 2x1 shadow-lg p-6'>
-            <h1 className='font-mono font-bold'>Hours: {hor}</h1>
+            <h1 className=' font-mono font-bold'>Hours: {hor}</h1>
             <h1 className='font-mono font-bold'>Minutes: {mins}</h1>
             <h1 className='font-mono font-bold'>Seconds: {secs}</h1>
 
-            <button className='font-mono font-bold p-4' onClick={() => setSeconds(0)}>
+            <button className='font-mono font-bold p-4 ' onClick={() => setSeconds(0)}>
                 Reset
             </button>
 

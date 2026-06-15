@@ -27,7 +27,7 @@ export default function Assistant() {
 
     return (
         <div className='bg-white rounded 2x1 shadow-lg p-6'>
-            <h1>AI Help</h1>
+            <h1 className=' font-mono font-bold'>AI Help</h1>
 
             <input
                 type="text"
@@ -36,15 +36,15 @@ export default function Assistant() {
                 placeholder="Ask Gemini"
             />
 
-            <button
+            <button className=' font-mono font-bold'
                 onClick={askQuestion}
                 disabled={loading}
             >
                 {loading ? "Thinking..." : "Ask"}
             </button>
 
-            <h2>Answer</h2>
-            <p>{answer}</p>
+            <h2 className=' font-mono font-bold'>Answer</h2>
+            <p className=' font-mono font-bold'>{answer}</p>
         </div>
     );
 }

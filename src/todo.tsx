@@ -64,7 +64,7 @@ export default function Todo() {
 
     return (
         <div className='bg-white rounded 2x1 shadow-lg p-6'>
-            <h1>Todo List</h1>
+            <h1 className=' font-mono font-bold'>Todo List</h1>
 
             <input
                 type="text"
@@ -73,7 +73,8 @@ export default function Todo() {
                 placeholder="Enter a task"
             />
 
-            <button onClick={addTask}>
+            <button  className=' font-mono font-bold'
+            onClick={addTask}>
                 Add
             </button>
 
