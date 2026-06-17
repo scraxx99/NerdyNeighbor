@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { askAI } from "./ai";
+
 
 export default function Assistant() {
     const [input, setInput] = useState<string>("");
