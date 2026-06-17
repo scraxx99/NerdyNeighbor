@@ -1,73 +1,130 @@
-# React + TypeScript + Vite
+# Nerdy Neighbor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A productivity and study companion that combines task management, time tracking, and AI-powered homework assistance into a single web app.
+<img width="1366" height="768" alt="Screenshot from 2026-06-17 20-36-41" src="https://github.com/user-attachments/assets/3fb2bf08-52f1-4db4-a0c7-65b2cd1d451e" />
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Live Demo
 
-## React Compiler
+**Try it here:  https://scraxx99.github.io/NerdyNeighbor/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* ✅ Persistent todo list with local storage
+* ⏱️ Built-in study timer with pause and reset controls
+* 🤖 AI homework assistant powered by Gemini
+* 💾 Automatically saves tasks between browser sessions
+* 🎨 Modern UI built with React, Tailwind CSS, and glassmorphism styling
+* ☁️ Secure AI backend using Cloudflare Workers to protect API keys
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Quick Start
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Use Online
+
+Simply visit the live demo:
+
+**https://YOUR_DEPLOY_URL**
+
+No installation required.
+
+---
+
+## Run Locally
+
+### Requirements
+
+* Node.js 20+
+* npm
+
+### Clone the repository
+
+```bash
+git clone https://github.com/scraxx99/nerdy-neighbor.git
+cd nerdy-neighbor
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### Start the development server
+
+```bash
+npm run dev
+```
+
+The app will be available at:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## Environment Variables
+
+The frontend does **not** store any API keys.
+
+AI requests are securely routed through a Cloudflare Worker that stores the Gemini API key as a secret.
+
+If deploying your own Worker:
+
+```text
+GEMINI_API_KEY=your_api_key_here
+```
+
+Store it using:
+
+```bash
+wrangler secret put GEMINI_API_KEY
+```
+
+---
+
+## How It Works
+
+Nerdy Neighbor was designed to reduce context switching while studying. Instead of opening separate apps for timers, notes, task lists, and AI tools, everything is available in one interface.
+
+The todo list uses browser local storage so tasks persist between sessions without requiring an account or database.
+
+The AI assistant is powered by Google's Gemini API, but API keys are never exposed to the client. A Cloudflare Worker acts as a secure backend proxy, handling requests and enforcing CORS and rate limits.
+
+The interface is built with React, TypeScript, Tailwind CSS, and Vite for fast performance and a responsive experience.
+
+---
+
+## Tech Stack
+
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* Cloudflare Workers
+* Google Gemini API
+
+---
+
+## Future Plans
+
+* 📚 Study session analytics
+* 📅 Calendar integration
+* 📝 AI-generated study guides
+* 🔔 Reminder notifications
+* 🌙 Additional themes and customization
+
+---
+
+## Credits
+
+* Google Gemini API for AI capabilities
+* Cloudflare Workers for secure serverless backend hosting
+* React and Vite ecosystems
+* Tailwind CSS for styling
+
+Created by **Scrax99** for Hack Club Stardance.
