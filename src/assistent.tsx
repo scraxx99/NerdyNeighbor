@@ -7,23 +7,41 @@ export default function Assistant() {
     const [loading, setLoading] = useState<boolean>(false);
 
     async function askQuestion() {
-        if (input.trim() === "") {
-            return;
-        }
-
-        setLoading(true);
-
-        try {
-            const response = await askAI(input);
-            setAnswer(response);
-            setInput("");
-        } catch (error) {
-            console.error(error);
-            setAnswer("An error occurred while   contacting Gemini.");
-        } finally {
-            setLoading(false);
-        }
+    if (input.trim() === "") {
+        return;
     }
+
+    setLoading(true);
+
+    try {
+        const response = await fetch(
+            "https://gemini-worker.scrax99.workers.dev",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    question: input,
+                }),
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Failed to contact AI service.");
+        }
+
+        const data = await response.json();
+
+        setAnswer(data.answer);
+        setInput("");
+    } catch (error) {
+        console.error(error);
+        setAnswer("An error occurred while contacting Gemini.");
+    } finally {
+        setLoading(false);
+    }
+}
     //className='bg-cyan-500 rounded 2x1 shadow-lg p-6'
     return (
         <div className='bg-black/30 backdrop-blur-md text-white rounded-2xl shadow-xl p-6'>
