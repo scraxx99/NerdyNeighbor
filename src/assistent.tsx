@@ -44,7 +44,7 @@ export default function Assistant() {
 }
     //className='bg-cyan-500 rounded 2x1 shadow-lg p-6'
     return (
-        <div className='bg-black/30 backdrop-blur-md text-white rounded-2xl shadow-xl p-6'>
+        <div className='bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl text-white rounded-2xl shadow-xl p-6'>
             <h1 className=' font-mono font-(bold'>AI Help</h1>
             <form onSubmit={(e) => {
             e.preventDefault();

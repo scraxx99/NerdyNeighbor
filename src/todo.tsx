@@ -63,7 +63,7 @@ export default function Todo() {
     }
 
     return (
-        <div className="bg-black/30 backdrop-blur-md text-white rounded-2xl shadow-xl p-6">
+        <div className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl text-white rounded-2xl shadow-xl p-6">
             <h1 className=' font-mono font-bold'>Todo List</h1>
             <form
              onSubmit={(e) => {
@@ -114,7 +114,7 @@ export default function Todo() {
                         </span>
 
                         <button
-                        className="bg-purple-600/50 backdrop-blur-md hover:bg-red-600/70 text-white px-4 py-2 rounded-lg transition"
+                        className="bg-purple-600/50 backdrop-blur-md hover:bg-red-600/70 m-4 text-white px-4 py-2 rounded-lg transition"
                             onClick={() =>
                                 deleteTask(task.id)
                             }

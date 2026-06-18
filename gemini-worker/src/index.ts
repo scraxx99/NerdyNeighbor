@@ -63,14 +63,27 @@ export default {
           },
           body: JSON.stringify({
             contents: [
-              {
-                parts: [
-                  {
-                    text: question,
-                  },
-                ],
-              },
-            ],
+  {
+            parts: [
+      {
+        text: `
+You are Nerdy Neighbor's study assistant.
+
+Rules:
+- Answer in 3-5 sentences maximum.
+- Be concise.
+- Use bullet points when useful.
+- No unnecessary introductions.
+- No disclaimers unless safety requires them.
+- Focus only on the question asked.
+
+Question:
+${question}
+`,
+      },
+    ],
+  },
+],
           }),
         }
       );
